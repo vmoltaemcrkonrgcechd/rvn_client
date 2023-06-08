@@ -2,7 +2,8 @@
 import { computed, onBeforeMount } from "vue";
 import Constants from "@/constants";
 import DataTable from "@/components/dataTable/DataTable.vue";
-import { useIndexStore } from "@/stores/index.js";
+import Form from "@/components/form/Form.vue";
+import { useIndexStore } from "@/stores";
 
 const props = defineProps({
   element: Object,
@@ -20,6 +21,9 @@ const getComponent = computed(() => {
   switch (props.element.type) {
     case Constants.TABLE_TYPE_NAME:
       return DataTable;
+
+    case Constants.FORM_TYPE_NAME:
+      return Form;
 
     default:
       return null;

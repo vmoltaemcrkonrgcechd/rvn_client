@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import Element from "@/components/element/Element.vue";
-import Constants from "@/constants/index.js";
+import Constants from "@/constants";
 
 const columns = [
   {
@@ -48,13 +48,33 @@ const element = {
   data,
 };
 
-const elements = ref([element]);
+const form = {
+  id: 2,
+  type: Constants.FORM_TYPE_NAME,
+  tableName: "some_table",
+  data: {
+    type: "post",
+    fields: [
+      {
+        id: 1,
+        type: Constants.INPUT_TEXT_TYPE_NAME,
+        data: {
+          label: "",
+          columnName: "NAME",
+          value: "DEFAULT NAME",
+        },
+      },
+    ],
+  },
+};
+
+const elements = ref([element, form]);
 
 onMounted(() => {});
 </script>
 
 <template>
-  <div class="grid grid-cols-2 h-screen w-screen items-start">
-    <Element v-for="element in elements" :key="element.id" :element="element" />
+  <div class="h-screen w-screen grid grid-cols-2 items-start gap-4 p-8">
+    <Element v-for="element in elements" :key="element" :element="element" />
   </div>
 </template>

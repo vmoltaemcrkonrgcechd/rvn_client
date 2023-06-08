@@ -20,7 +20,7 @@ defineProps({
       </tr>
     </thead>
     <tbody>
-      <tr v-for="row in data.rows" :key="row" class="even:bg-blue-50">
+      <tr v-for="row in data.rows" :key="row" class="bg-white even:bg-blue-50">
         <BodyCell
           v-for="column in data.columns"
           :key="column"
