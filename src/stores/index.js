@@ -23,10 +23,18 @@ export const useIndexStore = defineStore("index", () => {
     Object.keys(elements[tableName]).forEach((i) => {});
   };
 
-  const insert = ({ tableName, data }) => {
+  const insert = ({ tableName, data }, success) => {
     Api.insert(tableName, data)
-      .then(() => redraw(tableName))
-      .catch(() => redraw(tableName));
+      .then(() => {
+        if (typeof success === "function") {
+          success();
+        }
+
+        redraw(tableName);
+      })
+      .catch(() => {
+        redraw(tableName);
+      });
   };
 
   return {

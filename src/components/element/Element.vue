@@ -34,10 +34,10 @@ const getElement = computed(() => {
   return reactiveElement.value;
 });
 
-const onMsg = (type, payload) => {
+const onMsg = (type, payload, success) => {
   switch (type) {
     case Constants.POST_TYPE_NAME:
-      indexStore.insert(payload);
+      indexStore.insert(payload, success);
       return;
 
     default:

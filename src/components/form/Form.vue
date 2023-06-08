@@ -3,15 +3,12 @@ import InputText from "@/components/form/InputText.vue";
 import { onMounted } from "vue";
 import Button from "@/components/form/Button.vue";
 import Constants from "@/constants";
-import { useIndexStore } from "@/stores";
 
 const props = defineProps({
   element: Object,
 });
 
 const emit = defineEmits(["msg"]);
-
-const indexStore = useIndexStore();
 
 const getComponent = (type) => {
   switch (type) {
