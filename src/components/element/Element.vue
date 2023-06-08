@@ -30,11 +30,22 @@ const getComponent = computed(() => {
   }
 });
 
-const data = computed(() => {
-  return reactiveElement.value.data;
+const getElement = computed(() => {
+  return reactiveElement.value;
 });
+
+const onMsg = (type, payload) => {
+  switch (type) {
+    case Constants.POST_TYPE_NAME:
+      indexStore.insert(payload);
+      return;
+
+    default:
+      return;
+  }
+};
 </script>
 
 <template>
-  <component :is="getComponent" :data="data" />
+  <component :is="getComponent" :element="getElement" @msg="onMsg" />
 </template>

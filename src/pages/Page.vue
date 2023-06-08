@@ -59,9 +59,17 @@ const form = {
         id: 1,
         type: Constants.INPUT_TEXT_TYPE_NAME,
         data: {
-          label: "",
           columnName: "NAME",
           value: "DEFAULT NAME",
+        },
+      },
+      {
+        id: 2,
+        type: Constants.INPUT_TEXT_TYPE_NAME,
+        data: {
+          displayName: "ВОЗРАСТ",
+          columnName: "AGE",
+          value: "21",
         },
       },
     ],

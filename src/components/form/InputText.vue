@@ -1,5 +1,6 @@
 <script setup>
 import { ref, watch } from "vue";
+import Utils from "@/utils/index.js";
 
 const props = defineProps({
   data: Object,
@@ -18,5 +19,6 @@ watch(value, (newValue) => {
   <input
     class="py-1 px-3 border border-slate-900 rounded-md outline-none"
     v-model="value"
+    :placeholder="Utils.getDisplayNameOrColumnName(data)"
   />
 </template>

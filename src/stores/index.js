@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
+import Api from "@/api/index.js";
 
 export const useIndexStore = defineStore("index", () => {
   const elements = {};
@@ -18,7 +19,18 @@ export const useIndexStore = defineStore("index", () => {
     return elements[element.tableName][element.id];
   };
 
+  const redraw = (tableName) => {
+    Object.keys(elements[tableName]).forEach((i) => {});
+  };
+
+  const insert = ({ tableName, data }) => {
+    Api.insert(tableName, data)
+      .then(() => redraw(tableName))
+      .catch(() => redraw(tableName));
+  };
+
   return {
     setElement,
+    insert,
   };
 });
