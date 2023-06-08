@@ -1,7 +1,6 @@
 <script setup>
 import { computed } from "vue";
-
-const FRACTION_DIGITS = 2;
+import Constants from "@/constants";
 
 const props = defineProps({
   value: null,
@@ -18,7 +17,7 @@ const cellClass = computed(() => {
 const formattedValue = computed(() => {
   switch (typeof props.value) {
     case "number":
-      return props.value.toFixed(FRACTION_DIGITS);
+      return props.value.toFixed(Constants.FRACTION_DIGITS);
     case "boolean":
       return props.value ? "да" : "нет";
     default:
